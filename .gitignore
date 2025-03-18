@@ -1,1 +1,56 @@
-/Project/
+# Eclipse project files
+.classpath
+.project
+.settings/
+.metadata/
+
+# Build directories
+bin/
+build/
+target/
+out/
+WEB-INF/classes/
+WEB-INF/lib/
+
+# Maven dependencies
+.mvn/
+!mvn/wrapper/maven-wrapper.jar
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.properties
+mvnw
+mvnw.cmd
+
+# Gradle
+.gradle/
+build/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# IDE settings
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# OS generated files
+*.bak
+*.tmp
+*.log
+*.cache
+*.vscode/
+*.idea/
+*.iml
+*.ipr
+*.iws
