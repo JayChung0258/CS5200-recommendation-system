@@ -1,104 +1,115 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ include file="navbar.jsp" %>
+
+
 <!DOCTYPE html>
+
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Entertainment Usage Management</title>
+<meta charset="utf-8"/>
+<title>Entertainment</title>
+<style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f9f9f9; }
+        h1, h2 { color: #333; }
+        form { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        input[type="text"], input[type="number"], select { width: 100%; padding: 8px; margin: 6px 0 12px; border: 1px solid #ccc; border-radius: 4px; }
+        input[type="submit"] { background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        input[type="submit"]:hover { background-color: #45a049; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { text-align: left; padding: 10px; border-bottom: 1px solid #ddd; }
+        tr:hover { background-color: #f1f1f1; }
+    </style>
 </head>
 <body>
-    <h1>Entertainment Usage Records</h1>
-    
-    <h2>Add Entertainment Usage Record</h2>
-    <form action="entertainment" method="post">
-        <input type="hidden" name="action" value="add">
-        <p>
-            <label for="userID">User ID:</label>
-            <input type="number" id="userID" name="userID" required>
-        </p>
-        <p>
-            <label for="totalScreenTime">Total Screen Time (hours):</label>
-            <input type="number" step="0.1" id="totalScreenTime" name="totalScreenTime" required>
-        </p>
-        <p>
-            <label for="dailyEntertainmentTime">Daily Entertainment Time (hours):</label>
-            <input type="number" step="0.1" id="dailyEntertainmentTime" name="dailyEntertainmentTime" required>
-        </p>
-        <p>
-            <label for="dailyVideoTime">Daily Video Content Time (hours):</label>
-            <input type="number" step="0.1" id="dailyVideoTime" name="dailyVideoContentTime" required>
-        </p>
-        <p>
-            <label for="dailyGamingTime">Daily Gaming Time (hours):</label>
-            <input type="number" step="0.1" id="dailyGamingTime" name="dailyGamingTime" required>
-        </p>
-        <p>
-            <label for="dailyMusicTime">Daily Music Listening Time (hours):</label>
-            <input type="number" step="0.1" id="dailyMusicTime" name="dailyMusicListeningTime" required>
-        </p>
-        <p>
-            <label for="subscriptionPlatforms">Number of Subscription Platforms:</label>
-            <input type="number" id="subscriptionPlatforms" name="subscriptionPlatforms" required>
-        </p>
-        <p>
-            <label for="preferredContent">Preferred Content Type:</label>
-            <input type="text" id="preferredContent" name="preferredContentType" required>
-        </p>
-        <p>
-            <label for="preferredPlatform">Preferred Entertainment Platform:</label>
-            <input type="text" id="preferredPlatform" name="preferredEntertainmentPlatform" required>
-        </p>
-        <p>
-            <input type="submit" value="Add Entertainment Usage Record">
-        </p>
-    </form>
-    
-    <h2>Existing Entertainment Usage Records</h2>
-    <table border="1">
-        <tr>
-            <th>Usage ID</th>
-            <th>User ID</th>
-            <th>Total Screen Time</th>
-            <th>Daily Entertainment Time</th>
-            <th>Daily Video Content Time</th>
-            <th>Daily Gaming Time</th>
-            <th>Daily Music Listening Time</th>
-            <th>Subscription Platforms</th>
-            <th>Preferred Content Type</th>
-            <th>Preferred Platform</th>
-            <th>Update</th>
-            <th>Delete</th>
-        </tr>
-        <c:forEach items="${entertainmentList}" var="entertainment">
-            <tr>
-                <td><c:out value="${entertainment.usageID}" /></td>
-                <td><c:out value="${entertainment.userID}" /></td>
-                <td><c:out value="${entertainment.totalScreenTime}" /></td>
-                <td><c:out value="${entertainment.dailyEntertainmentTime}" /></td>
-                <td><c:out value="${entertainment.dailyVideoContentTime}" /></td>
-                <td><c:out value="${entertainment.dailyGamingTime}" /></td>
-                <td><c:out value="${entertainment.dailyMusicListeningTime}" /></td>
-                <td><c:out value="${entertainment.subscriptionPlatforms}" /></td>
-                <td><c:out value="${entertainment.preferredContentType}" /></td>
-                <td><c:out value="${entertainment.preferredEntertainmentPlatform}" /></td>
-                <td>
-                    <form action="entertainment" method="post">
-                        <input type="hidden" name="action" value="update">
-                        <input type="hidden" name="usageID" value="${entertainment.usageID}">
-                        <label for="newDailyTime">New Daily Entertainment Time:</label>
-                        <input type="number" step="0.1" name="dailyEntertainmentTime" required>
-                        <input type="submit" value="Update">
-                    </form>
-                </td>
-                <td>
-                    <form action="entertainment" method="post">
-                        <input type="hidden" name="action" value="delete">
-                        <input type="hidden" name="usageID" value="${entertainment.usageID}">
-                        <input type="submit" value="Delete">
-                    </form>
-                </td>
-            </tr>
-        </c:forEach>
-    </table>
-</body>
+<br/>
+<h1>Entertainment Usage Records</h1>
+<h2>Add Entertainment Usage Record</h2>
+<form action="entertainment" method="post">
+<input name="action" type="hidden" value="add"/>
+<p>
+<label for="userID">User ID:</label>
+<input id="userID" name="userID" required="" type="number"/>
+</p>
+<p>
+<label for="totalScreenTime">Total Screen Time (hours):</label>
+<input id="totalScreenTime" name="totalScreenTime" required="" step="0.1" type="number"/>
+</p>
+<p>
+<label for="dailyEntertainmentTime">Daily Entertainment Time (hours):</label>
+<input id="dailyEntertainmentTime" name="dailyEntertainmentTime" required="" step="0.1" type="number"/>
+</p>
+<p>
+<label for="dailyVideoTime">Daily Video Content Time (hours):</label>
+<input id="dailyVideoTime" name="dailyVideoContentTime" required="" step="0.1" type="number"/>
+</p>
+<p>
+<label for="dailyGamingTime">Daily Gaming Time (hours):</label>
+<input id="dailyGamingTime" name="dailyGamingTime" required="" step="0.1" type="number"/>
+</p>
+<p>
+<label for="dailyMusicTime">Daily Music Listening Time (hours):</label>
+<input id="dailyMusicTime" name="dailyMusicListeningTime" required="" step="0.1" type="number"/>
+</p>
+<p>
+<label for="subscriptionPlatforms">Number of Subscription Platforms:</label>
+<input id="subscriptionPlatforms" name="subscriptionPlatforms" required="" type="number"/>
+</p>
+<p>
+<label for="preferredContent">Preferred Content Type:</label>
+<input id="preferredContent" name="preferredContentType" required="" type="text"/>
+</p>
+<p>
+<label for="preferredPlatform">Preferred Entertainment Platform:</label>
+<input id="preferredPlatform" name="preferredEntertainmentPlatform" required="" type="text"/>
+</p>
+<p>
+<input type="submit" value="Add Entertainment Usage Record"/>
+</p>
+</form>
+<h2>Existing Entertainment Usage Records</h2>
+<table border="1">
+<tr>
+<th>Usage ID</th>
+<th>User ID</th>
+<th>Total Screen Time</th>
+<th>Daily Entertainment Time</th>
+<th>Daily Video Content Time</th>
+<th>Daily Gaming Time</th>
+<th>Daily Music Listening Time</th>
+<th>Subscription Platforms</th>
+<th>Preferred Content Type</th>
+<th>Preferred Platform</th>
+<th>Update</th>
+<th>Delete</th>
+</tr>
+<c:foreach items="${entertainmentList}" var="entertainment">
+<tr>
+<td><c:out value="${entertainment.usageID}"></c:out></td>
+<td><c:out value="${entertainment.userID}"></c:out></td>
+<td><c:out value="${entertainment.totalScreenTime}"></c:out></td>
+<td><c:out value="${entertainment.dailyEntertainmentTime}"></c:out></td>
+<td><c:out value="${entertainment.dailyVideoContentTime}"></c:out></td>
+<td><c:out value="${entertainment.dailyGamingTime}"></c:out></td>
+<td><c:out value="${entertainment.dailyMusicListeningTime}"></c:out></td>
+<td><c:out value="${entertainment.subscriptionPlatforms}"></c:out></td>
+<td><c:out value="${entertainment.preferredContentType}"></c:out></td>
+<td><c:out value="${entertainment.preferredEntertainmentPlatform}"></c:out></td>
+<td>
+<form action="entertainment" method="post">
+<input name="action" type="hidden" value="update"/>
+<input name="usageID" type="hidden" value="${entertainment.usageID}"/>
+<label for="newDailyTime">New Daily Entertainment Time:</label>
+<input name="dailyEntertainmentTime" required="" step="0.1" type="number"/>
+<input type="submit" value="Update"/>
+</form>
+</td>
+<td>
+<form action="entertainment" method="post">
+<input name="action" type="hidden" value="delete"/>
+<input name="usageID" type="hidden" value="${entertainment.usageID}"/>
+<input type="submit" value="Delete"/>
+</form>
+</td>
+</tr>
+</c:foreach>
+</table></body>
 </html>
